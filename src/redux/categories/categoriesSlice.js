@@ -8,4 +8,6 @@ const categoriesSlice = createSlice({
   },
 });
 
-export const { actions, reducer } = categoriesSlice;
+export const { reducer } = categoriesSlice;
+
+export default categoriesSlice.actions;
