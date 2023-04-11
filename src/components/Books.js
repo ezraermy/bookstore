@@ -7,6 +7,9 @@ const Books = () => (
       <br />
       <br />
       <input type="text" placeholder="Author" />
+      <br />
+      <br />
+      <button type="submit" className="btn">Add book</button>
     </form>
   </div>
 );
