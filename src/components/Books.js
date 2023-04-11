@@ -6,6 +6,8 @@ const Books = () => {
   const books = useSelector((state) => state.books.books);
   const dispatch = useDispatch();
 
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
   const categories = ['Fiction', 'Nonfiction'];
 
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -13,12 +15,15 @@ const Books = () => {
   const handleAddBook = () => {
     const newBook = {
       itemId: Math.floor(Math.random() * 100),
-      title: 'New Book',
-      author: 'John Doe',
+      title,
+      author,
       category: selectedCategory || categories[0],
     };
 
     dispatch(addBook(newBook));
+
+    setTitle('');
+    setAuthor('');
   };
 
   const handleRemoveBook = (itemId) => {
@@ -45,6 +50,7 @@ const Books = () => {
             {book.title}
             {' '}
             by
+            {' '}
             {book.author}
             <button type="button" onClick={() => handleRemoveBook(book.itemId)}>
               Remove
@@ -52,9 +58,27 @@ const Books = () => {
           </li>
         ))}
       </ul>
-      <button type="button" onClick={handleAddBook}>
-        Add Book
-      </button>
+      <div>
+        <input
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <br />
+        <br />
+        <input
+          type="text"
+          placeholder="Author"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+        <br />
+        <br />
+        <button type="button" onClick={handleAddBook}>
+          Add Book
+        </button>
+      </div>
     </div>
   );
 };
