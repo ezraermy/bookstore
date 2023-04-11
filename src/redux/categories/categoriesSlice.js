@@ -10,4 +10,4 @@ const categoriesSlice = createSlice({
 
 export const { reducer } = categoriesSlice;
 
-export default categoriesSlice.actions;
+export default categoriesSlice.reducer;
