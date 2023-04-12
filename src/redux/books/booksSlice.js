@@ -38,32 +38,40 @@ export const booksSlice = createSlice({
   name: 'books',
   initialState,
   reducers: {
-    addBook: (state, action) => {
-      state.allBooks.push(action.payload);
-    },
-    removeBook: (state, action) => {
-      state.allBooks = state.allBooks.filter((book) => book.id !== action.payload);
-    },
+    addBook: (state, action) => ({
+      ...state,
+      allBooks: [...state.allBooks, action.payload],
+    }),
+    removeBook: (state, action) => ({
+      ...state,
+      allBooks: state.allBooks.filter((book) => book.id !== action.payload),
+    }),
+
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getBooks.fulfilled, (state, action) => {
-        state.allBooks = Object.entries(action.payload).map(([id, [book]]) => ({ id, ...book }));
-      })
-      .addCase(postBook.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(deleteBook.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(postBook.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.allBooks.push(action.payload);
-      })
-      .addCase(deleteBook.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.allBooks = state.allBooks.filter((book) => book.id !== action.payload);
-      });
+      .addCase(getBooks.fulfilled, (state, action) => ({
+        ...state,
+        allBooks: Object.entries(action.payload).map(([id, [book]]) => ({ id, ...book })),
+      }))
+      .addCase(postBook.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(deleteBook.pending, (state) => ({
+        ...state,
+        isLoading: true,
+      }))
+      .addCase(postBook.fulfilled, (state, action) => ({
+        ...state,
+        isLoading: false,
+        allBooks: [...state.allBooks, action.payload],
+      }))
+      .addCase(deleteBook.fulfilled, (state, action) => ({
+        ...state,
+        isLoading: false,
+        allBooks: state.allBooks.filter((book) => book.id !== action.payload),
+      }));
   },
 
 });
