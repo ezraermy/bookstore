@@ -14,7 +14,7 @@ const Books = () => {
   }, [dispatch]);
 
   const handleRemoveBook = async (id) => {
-    const key = '4sREW0WX96Co7j4nt5il';
+    const key = process.env.REACT_APP_API_KEY;
     try {
       await axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${key}/books/${id}`);
 

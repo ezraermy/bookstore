@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
-const key = '4sREW0WX96Co7j4nt5il';
+const key = process.env.REACT_APP_API_KEY;
 
 const initialState = {
   allBooks: [],
