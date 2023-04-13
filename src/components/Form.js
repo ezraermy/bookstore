@@ -33,23 +33,23 @@ const Form = () => {
 
   return (
     <div className="form-container">
-      <h3 className="form-title">ADD NEW BOOK</h3>
+      <h3 className="form-title fonts">ADD NEW BOOK</h3>
       <div className="input-form">
         <input
           type="text"
           placeholder="Book Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          className="book-input"
+          className="book-input fonts"
         />
         <input
           type="text"
           placeholder="Book Author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
-          className="author-input"
+          className="author-input fonts"
         />
-        <button type="button" onClick={handleAddBook} className="add-btn">
+        <button type="button" onClick={handleAddBook} className="add-btn fonts">
           Add Book
         </button>
       </div>

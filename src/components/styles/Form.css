@@ -8,6 +8,12 @@
   flex-direction: row;
 }
 
+.fonts {
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+}
+
 .form-title {
   width: 10.875rem;
   height: 1.5rem;
@@ -15,9 +21,6 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1.25rem;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: -0.18px;
   color: rgb(136, 136, 136);
 }
@@ -33,9 +36,6 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: -0.15px;
   color: #585656;
 }
@@ -51,9 +51,6 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
   font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: -0.15px;
   color: #585656;
 }
@@ -69,9 +66,6 @@
   font-family: 'Montserrat', sans-serif;
   font-size: 0.813rem;
   font-weight: bold;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
   letter-spacing: 0.5px;
   text-align: center;
   color: #fff;
