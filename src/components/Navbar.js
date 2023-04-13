@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import './styles/navbar.css';
+import Icon from './styles/Icon.png';
 
 const Navbar = () => {
   const links = [
@@ -16,6 +17,7 @@ const Navbar = () => {
           </li>
         ))}
       </ul>
+      <img src={Icon} alt="icon" className="icon" />
     </div>
   );
 };
