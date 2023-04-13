@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBook, getBooks } from 'redux/books/booksSlice';
 import Form from './Form';
+import './styles/books.css';
+import Book from './Book';
 
 const Books = () => {
   const dispatch = useDispatch();
@@ -25,22 +27,13 @@ const Books = () => {
   };
 
   return (
-    <div>
-      {isLoading && <p>Loading books...</p>}
+    <div className="container">
+      {isLoading && <p className="loading">Loading books...</p>}
       {!isLoading && (
         <>
           <ul>
             {books.map((book) => (
-              <li key={book.id}>
-                {book.title}
-                {' '}
-                by
-                {' '}
-                {book.author}
-                <button type="button" onClick={() => handleRemoveBook(book.id)}>
-                  Remove
-                </button>
-              </li>
+              <Book key={book.id} book={book} handleRemoveBook={handleRemoveBook} />
             ))}
           </ul>
           <Form />

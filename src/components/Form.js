@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { postBook, getBooks } from 'redux/books/booksSlice';
+import './styles/Form.css';
 
 const Form = () => {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [message, setMessage] = useState('');
+  const categories = ['Fiction', 'Classic'];
 
   const handleAddBook = async () => {
     if (title.trim() === '' || author.trim() === '') {
@@ -18,7 +20,7 @@ const Form = () => {
       id: Math.floor(Math.random() * 100),
       title,
       author,
-      category: '',
+      category: categories[0],
     };
 
     await dispatch(postBook(newBook));
@@ -30,27 +32,28 @@ const Form = () => {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <br />
-      <br />
-      <input
-        type="text"
-        placeholder="Author"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
-      <br />
-      <br />
-      <button type="button" onClick={handleAddBook}>
-        Add Book
-      </button>
-      {message && <p>{message}</p>}
+    <div className="form-container">
+      <h3 className="form-title">ADD NEW BOOK</h3>
+      <div className="input-form">
+        <input
+          type="text"
+          placeholder="Book Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          className="book-input"
+        />
+        <input
+          type="text"
+          placeholder="Book Author"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+          className="author-input"
+        />
+        <button type="button" onClick={handleAddBook} className="add-btn">
+          Add Book
+        </button>
+      </div>
+      {message && <p className="error">{message}</p>}
     </div>
   );
 };
