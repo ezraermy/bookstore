@@ -3,6 +3,8 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { removeBook, getBooks } from 'redux/books/booksSlice';
 import Form from './Form';
+import './styles/books.css';
+import Book from './Book';
 
 const Books = () => {
   const dispatch = useDispatch();
@@ -14,7 +16,7 @@ const Books = () => {
   }, [dispatch]);
 
   const handleRemoveBook = async (id) => {
-    const key = process.env.REACT_APP_API_KEY;
+    const key = '4sREW0WX96Co7j4nt5il';
     try {
       await axios.delete(`https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/${key}/books/${id}`);
 
@@ -25,22 +27,13 @@ const Books = () => {
   };
 
   return (
-    <div>
-      {isLoading && <p>Loading books...</p>}
+    <div className="container">
+      {isLoading && <p className="loading">Loading books...</p>}
       {!isLoading && (
         <>
           <ul>
             {books.map((book) => (
-              <li key={book.id}>
-                {book.title}
-                {' '}
-                by
-                {' '}
-                {book.author}
-                <button type="button" onClick={() => handleRemoveBook(book.id)}>
-                  Remove
-                </button>
-              </li>
+              <Book key={book.id} book={book} handleRemoveBook={handleRemoveBook} />
             ))}
           </ul>
           <Form />
