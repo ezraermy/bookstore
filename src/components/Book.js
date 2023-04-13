@@ -15,7 +15,7 @@ const Book = ({ book, handleRemoveBook }) => (
         </h4>
       </div>
       <button type="button" className="comment-btn">
-        Contents
+        Comments
       </button>
       <span className="s-line">|</span>
       <button type="button" onClick={() => handleRemoveBook(book.id)} className="remove-btn">
